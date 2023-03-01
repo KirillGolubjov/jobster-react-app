@@ -21,25 +21,35 @@ const Register = () => {
     e.preventDefault();
     console.log(e.target);
   };
+
+  const toggleMember = () => {
+    setValues({ ...values, isMember: !values.isMember });
+  };
+
   // redux toolkit and useNavigate later
   return (
     <Wrapper className='full-page'>
       <form className='form' onSubmit={onSubmit}>
         <Logo />
-        <h3>Login</h3>
+        <h3>{values.isMember ? 'Login' : 'Register'}</h3>
+
         {/* name field */}
-        <FormRow
-          type='text'
-          name='name'
-          value={values.name}
-          handleChange={handleChange}
-        />
+        {!values.isMember && (
+          <FormRow
+            type='text'
+            name='name'
+            value={values.name}
+            handleChange={handleChange}
+          />
+        )}
+
         {/* email field */}
         <FormRow
           type='email'
           name='email'
           value={values.email}
           handleChange={handleChange}
+          z
         />
         {/* password field */}
         <FormRow
@@ -50,8 +60,14 @@ const Register = () => {
         />
 
         <button type='submit' className='btn btn-block'>
-          submit
+          Submit
         </button>
+        <p>
+          {values.isMember ? 'Not a member yet?' : 'Already a member?'}
+          <button type='submit' onClick={toggleMember} className='member-btn'>
+            {values.isMember ? 'Register' : 'Log in'}
+          </button>
+        </p>
       </form>
     </Wrapper>
   );
