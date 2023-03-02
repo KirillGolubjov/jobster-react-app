@@ -4,7 +4,7 @@ import Wrapper from '../assets/wrappers/RegisterPage';
 import { toast } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser, registerUser } from '../features/user/userSlice';
-import axios from 'axios';
+
 // redux toolkit and useNavigate later
 
 const initialState = {
@@ -16,7 +16,7 @@ const initialState = {
 
 const Register = () => {
   const dispatch = useDispatch();
-  const { isLoading, user } = useSelector((store) => store.user);
+  const { user, isLoading } = useSelector((store) => store.user);
   const [values, setValues] = useState(initialState);
 
   const handleChange = (e) => {
@@ -76,8 +76,8 @@ const Register = () => {
           handleChange={handleChange}
         />
 
-        <button type='submit' className='btn btn-block'>
-          Submit
+        <button type='submit' className='btn btn-block' disabled={isLoading}>
+          {isLoading ? 'loading...' : 'submit'}
         </button>
         <p>
           {values.isMember ? 'Not a member yet?' : 'Already a member?'}
