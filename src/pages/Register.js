@@ -21,14 +21,6 @@ const Register = () => {
   const { user, isLoading } = useSelector((store) => store.user);
   const [values, setValues] = useState(initialState);
 
-  useEffect(() => {
-    if (user) {
-      setTimeout(() => {
-        navigate('/');
-      }, 3000);
-    }
-  }, [user, navigate]);
-
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -53,6 +45,13 @@ const Register = () => {
     setValues({ ...values, isMember: !values.isMember });
   };
 
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
+    }
+  }, [user, navigate]);
   // redux toolkit and useNavigate later
   return (
     <Wrapper className='full-page'>
