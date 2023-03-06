@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { FormRow, FormRowSelect } from '../../components';
 import Wrapper from '../../assets/wrappers/DashboardFormPage';
 import { useSelector, useDispatch } from 'react-redux';
@@ -21,6 +22,7 @@ const AddJob = () => {
     isEditing,
     editJobId,
   } = useSelector((store) => store.job);
+  const { user } = useSelector((store) => store.user);
 
   const dispatch = useDispatch();
 
@@ -41,6 +43,12 @@ const AddJob = () => {
   const clearJob = () => {
     dispatch(clearValues());
   };
+
+  useEffect(() => {
+    if (!isEditing) {
+      dispatch(handleChange({ name: 'jobLocation', value: user.location }));
+    }
+  }, []);
 
   return (
     <Wrapper>
