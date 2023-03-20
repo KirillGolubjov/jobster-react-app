@@ -11,6 +11,9 @@ const Stats = () => {
   useEffect(() => {
     dispatch(showStats());
   }, []);
+  // if (isLoading) {
+  //   return <Loading center />;
+  // }
   return (
     <>
       <StatsContainer />
