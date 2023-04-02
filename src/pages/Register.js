@@ -6,8 +6,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loginUser, registerUser } from '../features/user/userSlice';
 import { useNavigate } from 'react-router-dom';
 
-// redux toolkit and useNavigate later
-
 const initialState = {
   name: '',
   email: '',
@@ -16,10 +14,10 @@ const initialState = {
 };
 
 const Register = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const { user, isLoading } = useSelector((store) => store.user);
   const [values, setValues] = useState(initialState);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const name = e.target.name;

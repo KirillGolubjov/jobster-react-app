@@ -9,11 +9,12 @@ const NavLinks = ({ toggleSidebar }) => {
         return (
           <NavLink
             to={path}
+            className={({ isActive }) => {
+              return isActive ? 'nav-link active' : 'nav-link';
+            }}
             key={id}
             onClick={toggleSidebar}
-            className={({ isActive }) =>
-              isActive ? 'nav-link active' : 'nav-link'
-            }
+            end
           >
             <span className='icon'>{icon}</span>
             {text}

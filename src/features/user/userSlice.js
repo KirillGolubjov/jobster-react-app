@@ -45,6 +45,9 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    toggleSidebar: (state) => {
+      state.isSidebarOpen = !state.isSidebarOpen;
+    },
     logoutUser: (state, { payload }) => {
       state.user = null;
       state.isSidebarOpen = false;
@@ -52,9 +55,6 @@ const userSlice = createSlice({
       if (payload) {
         toast.success(payload);
       }
-    },
-    toggleSidebar: (state) => {
-      state.isSidebarOpen = !state.isSidebarOpen;
     },
   },
   extraReducers: (builder) => {

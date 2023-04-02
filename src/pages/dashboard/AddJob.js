@@ -24,11 +24,11 @@ const AddJob = () => {
     editJobId,
   } = useSelector((store) => store.job);
   const { user } = useSelector((store) => store.user);
-
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!position || !company || !jobLocation) {
       toast.error('Please Fill Out All Fields');
       return;
@@ -108,7 +108,7 @@ const AddJob = () => {
             <button
               type='button'
               className='btn btn-block clear-btn'
-              onClick={clearJob}
+              onClick={() => dispatch(clearValues())}
             >
               clear
             </button>
